@@ -81,3 +81,17 @@ A typical use of BileActome follows these steps:
 ## Notes
 
 BileActome is designed as a reusable annotation resource for microbial bile acid metabolism. The example workflows in this repository are provided to facilitate reproducible use of the database in two common microbiome analysis scenarios, but users are encouraged to adapt the database and scripts to their own data structures and computational environments.
+
+## Citation
+
+If you use BileActome in your research, please cite:
+
+Zhang B, Jiang X, Zhao H, Wang B. BileActome reveals community-assembled bile acid metabolism in the rumen microbiome. *ISME Communications*. 2026. https://doi.org/10.1093/ismeco/ycag205
+
+## License
+
+The original content of this repository is licensed under the [Creative Commons Attribution 4.0 International License](LICENSE), unless otherwise stated.
+
+You are free to use, share, and adapt the licensed material, including for commercial purposes, provided that appropriate credit is given to the authors, a link to the license is provided, and any changes are indicated.
+
+Third-party data, database identifiers, software dependencies, and other externally sourced materials remain subject to the terms and licenses of their respective providers.
