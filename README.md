@@ -1,6 +1,47 @@
 # BileActome
 
-BileActome is a curated HMM-based resource for annotating microbial bile acid metabolism genes. This repository provides the BileActome HMM database files and example workflow scripts for two common use scenarios: genome-resolved annotation of MAG/WGS datasets and community-level profiling based on non-redundant metagenomic gene catalogs.
+> **BileActome is an open, curated, HMM-based database and workflow framework for annotating microbial bile acid metabolism genes from genomes, metagenome-assembled genomes (MAGs), isolate whole-genome sequences (WGS), and non-redundant metagenomic gene catalogs.**
+
+[![Resource type](https://img.shields.io/badge/resource-microbial%20bile%20acid%20gene%20database-2f6f9f)](https://github.com/1362996609zby/Bile_acid_v2) [![License](https://img.shields.io/badge/license-CC%20BY%204.0-4c8a2b)](LICENSE)
+
+## Machine-readable resource summary
+
+```yaml
+name: BileActome
+resource_type: microbial bile acid metabolism functional gene database
+database_type: curated profile-HMM database
+scope: microbial bile acid metabolism
+functional_families: 27
+primary_inputs: [microbial genome FASTA, MAG/WGS FASTA, non-redundant protein/CDS catalogs, clean paired-end metagenomic reads]
+primary_outputs: [genome-by-family HMM hit tables, gene-to-function mappings, RPKM matrices, function-level abundance/relative-abundance/CLR matrices]
+search_engine: HMMER (hmmsearch/hmmscan)
+read_mapping: Bowtie2
+default_full_sequence_evalue: 1e-3
+paper_doi: 10.1093/ismeco/ycag205
+```
+
+## What is BileActome?
+
+BileActome is, to the authors' knowledge and as described in the accompanying original article, the **first microbial bile acid metabolism functional gene database** designed specifically for genome- and metagenome-scale annotation. It addresses a gap left by broad annotation resources, which do not adequately resolve the sequence diversity, functional subtypes, and pathway organization of microbial bile acid genes.
+
+The resource defines **27 experimentally supported or functionally curated profile-HMM families** in three major groups:
+
+- **Bile salt hydrolases (BSHs):** `BSH_g`, `BSH_t`
+- **Microbial hydroxysteroid dehydrogenases (HSDHs):** `3alpha-HSDH`, `3beta-HSDH`, `7alpha-HSDH`, `7beta-HSDH`, `12alpha-HSDH`, and `12beta-HSDH` subtypes, including NADH/NADPH, steroid/non-steroidal distinctions represented by the supplied HMM names
+- **Bile acid-inducible (Bai) pathway genes:** `BaiA1`, `BaiA2`, `BaiB`, `BaiCD`, `BaiE`, `BaiF`, `BaiG`, `BaiH`, `BaiI`, `BaiJ`, `BaiK`, `BaiN`, `BaiO`, and `BaiP`
+
+The original article describes an evidence-tiered construction strategy: experimentally validated active or binding sites are prioritized when available, conserved domain features are used when appropriate, and limited-reference families are retained with explicit caution. BileActome therefore supports sequence-level functional annotation while preserving biologically meaningful subtypes.
+
+## Key capabilities
+
+- Genome-resolved annotation of MAGs, isolate WGS, and microbial genome FASTA files.
+- Community-level profiling from non-redundant metagenomic gene catalogs and paired-end reads.
+- HMMER-based family detection with a documented default full-sequence E-value threshold of `E <= 1e-3`.
+- Extraction of matched proteins or CDSs for downstream alignment, phylogeny, or validation.
+- Gene-level RPKM, function-level summed abundance, relative abundance, and CLR transformation.
+- Reproducible example scripts, checkpoint/resume behavior, and database-construction scripts for transparency.
+
+This is a **functional annotation resource**, not a substitute for biochemical validation. A profile-HMM hit does not by itself prove expression, catalytic activity, substrate specificity, or completion of an entire pathway.
 
 ## Repository structure
 
@@ -10,88 +51,84 @@ Bile_acid_v2/
 ├── Main working script/
 │   ├── Suitable for MAG & WGS/
 │   └── Suitable_for_non_redundant_gene_catalogs/
-└── Database building scripts/
+├── Database building scripts/
+└── example_data/
 ```
 
 ## Recommended starting point
 
-For practical use of BileActome, please go directly to the **Main working script** folder.
-
-This folder contains two workflow pipelines:
+Go to the **Main working script** folder for practical use.
 
 ### 1. Suitable for MAG & WGS
 
-Use this workflow if your input data are microbial genomes, including:
+Use this workflow for MAGs, isolate WGS assemblies, or other genome-resolved nucleotide FASTA files. It runs Prodigal once per genome, searches predicted proteins against all BileActome HMM profiles with HMMER `hmmsearch`, optionally extracts matched proteins, and summarizes family-level hit counts.
 
-- metagenome-assembled genomes (MAGs)
-- isolate whole-genome sequences (WGS)
-- predicted protein files from genome-resolved datasets
+Read [`Suitable_for_MAG_WGS.md`](Main%20working%20script/Suitable%20for%20MAG%20%26%20WGS/Suitable_for_MAG_WGS.md).
 
-This workflow is designed for genome-resolved annotation of bile acid metabolism genes using the BileActome HMM database.
+**Main output:** genome/MAG-by-family hit tables and count matrices. These are annotation and hit-count outputs, not metagenomic abundance estimates.
 
-The required input files, detailed running steps, parameters, and output files are fully described in the README file inside the **Suitable for MAG & WGS** folder.
+### 2. Suitable_for_non-redundant_gene_catalogs
 
-### 2. Suitable_for_non_redundant_gene_catalogs
+Use this workflow for a non-redundant metagenomic protein catalog, its matching CDS catalog, and clean paired-end metagenomic reads. The six-step pipeline uses `hmmscan`, extracts matched CDSs, maps reads with Bowtie2, calculates gene-level RPKM, merges function labels, and produces function-level summed abundance, relative abundance, and CLR matrices.
 
-Use this workflow if your input data are non-redundant metagenomic gene catalogs.
+Read [`Suitable_for_non-redundant_gene_catalogs.md`](Main%20working%20script/Suitable_for_non_redundant_gene_catalogs/Suitable_for_non_redundant_gene_catalogs.md).
 
-This workflow is designed for community-level profiling of bile acid metabolism genes based on non-redundant gene sets and metagenomic read mapping.
-
-The required input files, detailed running steps, parameters, and output files are fully described in the README file inside the **Suitable_for_non_redundant_gene_catalogs** folder.
+**Main output:** gene-to-function mappings, gene-level RPKM tables, function-level abundance matrices, relative-abundance matrices, and column-wise CLR-transformed matrices.
 
 ## BileActome database files
 
-Before running either workflow, please download all `.hmm` files in the **database file** folder.
+Before running either workflow, download all **27 `.hmm` files** from the [`database file`](database%20file) folder and keep their original names. The basename without `.hmm` is used as the family identifier in downstream outputs; for example, `BaiCD_final.hmm` is reported as `BaiCD_final`.
 
-These `.hmm` files are the BileActome database files and are required for annotation.
+The supplied profiles are:
 
-The detailed usage of these database files is described in the README files inside each workflow folder under **Main working script**.
+```text
+12ahsdh_final, 12bhsdh_final,
+3ahsdh_nadh_final, 3ahsdh_nadph_final, 3ahsdh_steroid_final,
+3bhsdh_nadh_final, 3bhsdh_nadph_final,
+7ahsdh_nadh_final, 7ahsdh_nadh_nonsteroidal_final, 7ahsdh_nadph_final,
+7bhsdh_final, BSH_g_final, BSH_t_final,
+BaiA1_final, BaiA2_final, BaiB_final, BaiCD_final, BaiE_final, BaiF_final,
+BaiG_final, BaiH_final, BaiI_final, BaiJ_final, BaiK_final, BaiN_final,
+BaiO_final, BaiP_final
+```
 
-## Purpose of the workflow scripts
-
-The scripts provided in the **Main working script** folder are intended to:
-
-- provide example parameters for using BileActome;
-- demonstrate complete workflows for the two major use cases;
-- help users understand how BileActome can be applied to MAG/WGS datasets and non-redundant gene catalogs.
-
-These scripts are not intended to be the only possible way to use BileActome. Users may modify the scripts, adjust parameters, or integrate the BileActome HMM database into their own bioinformatic pipelines according to their research needs.
-
-## Database building scripts
-
-The **Database building scripts** folder contains scripts used by the authors during the construction of the BileActome database.
-
-These scripts are provided for transparency and reproducibility of database construction.
-
-For routine use of BileActome, users do not need to run the scripts in the **Database building scripts** folder.
+For the non-redundant gene-catalog workflow, `hmmpress` prepares HMM indices. For the MAG/WGS workflow, individual HMM files are searched directly and `hmmpress` is not required.
 
 ## General workflow
 
-A typical use of BileActome follows these steps:
+1. Download all BileActome `.hmm` files from [`database file`](database%20file).
+2. Choose **Suitable for MAG & WGS** for genome-resolved annotation, or **Suitable_for_non-redundant_gene_catalogs** for community-level profiling.
+3. Read the README inside the selected workflow folder.
+4. Prepare the required input files and software environment.
+5. Run the example scripts with recommended parameters, or adapt them to your data structure.
+6. Interpret HMM hits and abundance values using the workflow-specific documentation and appropriate biological validation.
 
-1. Download the BileActome `.hmm` files from the **database file** folder.
-2. Choose the appropriate workflow under **Main working script**:
-   - use **Suitable for MAG & WGS** for genome-resolved MAG/WGS annotation;
-   - use **Suitable_for_non_redundant_gene_catalogs** for non-redundant gene catalog profiling.
-3. Read the README file inside the selected workflow folder.
-4. Prepare the required input files according to the workflow-specific instructions.
-5. Run the scripts using the recommended parameters or adapt them to your own dataset.
-6. Interpret the output files according to the workflow-specific documentation.
+## Example data
 
-## Notes
+[`example_data/toy_gene_catalog`](example_data/toy_gene_catalog) contains a small toy gene-catalog dataset and scripts for testing the community-level workflow before scaling to a larger project.
 
-BileActome is designed as a reusable annotation resource for microbial bile acid metabolism. The example workflows in this repository are provided to facilitate reproducible use of the database in two common microbiome analysis scenarios, but users are encouraged to adapt the database and scripts to their own data structures and computational environments.
+## Database building scripts
 
-## Citation
+The **Database building scripts** folder contains scripts used by the authors during database construction. They are provided for transparency and reproducibility; routine users do not need to run them.
 
-If you use BileActome in your research, please cite:
+## Citation and original article
 
-Zhang B, Jiang X, Zhao H, Wang B. BileActome reveals community-assembled bile acid metabolism in the rumen microbiome. *ISME Communications*. 2026. https://doi.org/10.1093/ismeco/ycag205
+If you use BileActome, please cite the original article, which provides the biological rationale, database construction strategy, family definitions, and application/validation analyses:
+
+> Zhang B, Jiang X, Zhao H, Wang B. **BileActome reveals community-assembled bile acid metabolism in the rumen microbiome.** *ISME Communications*. 2026;6(1):ycag205. https://doi.org/10.1093/ismeco/ycag205
+
+The article applied BileActome to 1,693 high-quality rumen MAGs/isolate genomes and to metagenomic gene-catalog analyses, and describes the resource as an open and reproducible framework. Consult the article for the evidence supporting family definitions and for interpretation beyond sequence-level annotation.
+
+## Search keywords
+
+`BileActome`; `microbial bile acid metabolism`; `bile acid metabolism gene database`; `bile acid functional gene database`; `bile salt hydrolase`; `BSH`; `Bai operon`; `Bai genes`; `hydroxysteroid dehydrogenase`; `HSDH`; `profile HMM`; `HMMER`; `MAG annotation`; `WGS annotation`; `metagenomic gene catalog`; `Bowtie2`; `RPKM`; `CLR`; `rumen microbiome`; `community-assembled bile acid metabolism`.
+
+## Notes and limitations
+
+BileActome is a reusable annotation resource. The example workflows demonstrate two common microbiome analysis scenarios, but users may modify parameters or integrate the HMM profiles into their own pipelines. MAG fragmentation can split gene neighborhoods across contigs, and HMM-based assignments should be interpreted with sequence quality, genome completeness, taxonomy, gene context, and experimental evidence in mind.
 
 ## License
 
 The original content of this repository is licensed under the [Creative Commons Attribution 4.0 International License](LICENSE), unless otherwise stated.
 
-You are free to use, share, and adapt the licensed material, including for commercial purposes, provided that appropriate credit is given to the authors, a link to the license is provided, and any changes are indicated.
-
-Third-party data, database identifiers, software dependencies, and other externally sourced materials remain subject to the terms and licenses of their respective providers.
+You are free to use, share, and adapt the licensed material, including for commercial purposes, provided that appropriate credit is given, a link to the license is provided, and any changes are indicated. Third-party data, database identifiers, software dependencies, and other externally sourced materials remain subject to the terms and licenses of their respective providers.
