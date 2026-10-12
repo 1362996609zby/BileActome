@@ -183,6 +183,30 @@ mamba create -n bileactome --strict-channel-priority -c conda-forge -c bioconda 
 conda activate bileactome
 ```
 
+### PyPI installation (publication pending)
+
+PyPI publication of the same CLI 1.0.0 wheel and source archive is prepared
+through [GitHub Trusted Publishing](.github/workflows/pypi-publish.yml).
+**Publication is pending the PyPI account owner's publisher configuration;
+the following command is not yet available from the public index.**
+See [publisher setup and verification](cli/docs/PYPI_PUBLISHING.md).
+
+After confirmed publication, install in an isolated Linux environment:
+
+```bash
+mamba create -n bileactome-pip --strict-channel-priority -c conda-forge -c bioconda python=3.11 pip 'bash>=4' 'hmmer>=3.4,<3.5' 'prodigal>=2.6.3,<2.7' 'bowtie2>=2.5.4,<2.6'
+conda activate bileactome-pip
+python -m pip install bileactome==1.0.0
+bileactome doctor --workflow all
+bileactome db verify
+bileactome self-test --workflow all
+```
+
+PyPI supplies the CLI, 27 HMMs, toy fixtures, and Python dependencies.
+It does **not** install the external HMMER, Prodigal, or Bowtie2 programs.
+The environment command above provides those tools. License terms,
+copyright, and commercial licensing contacts are unchanged.
+
 ### CLI commands, inputs, and outputs
 
 ```bash
