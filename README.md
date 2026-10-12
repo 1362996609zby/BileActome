@@ -151,6 +151,7 @@ is the currently validated platform.
 The [GitHub release](https://github.com/1362996609zby/BileActome/releases/tag/cli-v1.0.0)
 provides a source archive, Python wheel, and locally built Conda package.
 **Official Bioconda availability is pending recipe review and acceptance.**
+The submitted recipe is tracked in [Bioconda PR #70193](https://github.com/bioconda/bioconda-recipes/pull/70193).
 Do not expect `conda install bileactome` to work until the package is published
 in that channel. No PyPI release is claimed here either.
 
