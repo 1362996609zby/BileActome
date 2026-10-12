@@ -183,12 +183,12 @@ mamba create -n bileactome --strict-channel-priority -c conda-forge -c bioconda 
 conda activate bileactome
 ```
 
-### PyPI installation (publication pending)
+### PyPI publication deferred
 
 PyPI publication of the same CLI 1.0.0 wheel and source archive is prepared
 through [GitHub Trusted Publishing](.github/workflows/pypi-publish.yml).
-**Publication is pending the PyPI account owner's publisher configuration;
-the following command is not yet available from the public index.**
+**PyPI publication is deferred by project decision. No upload has been
+performed, and the command below is not available from the public index.**
 See [publisher setup and verification](cli/docs/PYPI_PUBLISHING.md).
 
 After confirmed publication, install in an isolated Linux environment:

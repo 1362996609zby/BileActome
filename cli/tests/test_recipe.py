@@ -21,3 +21,4 @@ def test_submission_recipe_uses_exact_release_archive(tmp_path, monkeypatch):
     assert url in result
     assert "path: ../.." not in result
     assert "LicenseRef-BileActome-Research-Commercial AND CC-BY-4.0" in result
+    assert 'run_exports:\n    - {{ pin_subpackage(name, max_pin="x") }}' in result
