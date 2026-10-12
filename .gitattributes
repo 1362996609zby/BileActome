@@ -1,0 +1,4 @@
+# Preserve exact profile-HMM bytes and compressed toy data in the CLI.
+cli/** linguist-vendored=false
+*.hmm -text -whitespace
+*.gz -text

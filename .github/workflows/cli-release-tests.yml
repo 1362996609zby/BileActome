@@ -1,0 +1,40 @@
+name: CLI release validation
+
+on:
+  push:
+    paths: ["cli/**", ".github/workflows/cli-release-tests.yml"]
+  pull_request:
+    paths: ["cli/**", ".github/workflows/cli-release-tests.yml"]
+  workflow_dispatch:
+
+jobs:
+  linux-wheel:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: mamba-org/setup-micromamba@v2
+        with:
+          environment-name: release-test
+          create-args: >-
+            python=${{ matrix.python-version }} pip setuptools>=77 wheel
+            python-build pytest twine hmmer=3.4 prodigal=2.6.3
+            bowtie2=2.5.4 biopython>=1.81,<2 numpy>=1.24,<2
+            pandas>=2.0,<3 openpyxl>=3.1,<4
+            -c conda-forge -c bioconda --strict-channel-priority
+          init-shell: bash
+      - name: Build and test installed wheel outside the source directory
+        shell: bash -el {0}
+        run: |
+          bash cli/tools/validate_release.sh "$CONDA_PREFIX" "$GITHUB_WORKSPACE/cli" "$RUNNER_TEMP/bileactome-validation"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: linux-python-${{ matrix.python-version }}
+          path: |
+            ${{ runner.temp }}/bileactome-validation/*.log
+            ${{ runner.temp }}/bileactome-validation/*.json
+            ${{ runner.temp }}/bileactome-validation/*.txt
+            ${{ runner.temp }}/bileactome-validation/dist/*

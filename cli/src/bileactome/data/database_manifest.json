@@ -1,0 +1,170 @@
+{
+  "schema_version": "1.0",
+  "database_name": "BileActome",
+  "database_version": "2026.01",
+  "expected_family_count": 27,
+  "files": [
+    {
+      "family": "12ahsdh_final",
+      "file": "12ahsdh_final.hmm",
+      "bytes": 119590,
+      "sha256": "1fcc2d1f4910fc14cac9e13b314a9a28e0f0777c14b411db839c12ff90c5afe2"
+    },
+    {
+      "family": "12bhsdh_final",
+      "file": "12bhsdh_final.hmm",
+      "bytes": 118660,
+      "sha256": "bd03c8cbd253c2baec23ba3a90778474800841e4f22b38702dd2472ee5379fc5"
+    },
+    {
+      "family": "3ahsdh_nadh_final",
+      "file": "3ahsdh_nadh_final.hmm",
+      "bytes": 120526,
+      "sha256": "394318dd12b759bde1164eaa94f173be93868fd0a1ffbf918ba9833e0cd97479"
+    },
+    {
+      "family": "3ahsdh_nadph_final",
+      "file": "3ahsdh_nadph_final.hmm",
+      "bytes": 124713,
+      "sha256": "0ae1e4865a126d4296f512c530ad3d4baef6533c3bbf208944f4b81367ec9680"
+    },
+    {
+      "family": "3ahsdh_steroid_final",
+      "file": "3ahsdh_steroid_final.hmm",
+      "bytes": 121460,
+      "sha256": "f267417de0f6599fed13e2bf34e1354098e677f80cbdac433f39fe18233a7796"
+    },
+    {
+      "family": "3bhsdh_nadh_final",
+      "file": "3bhsdh_nadh_final.hmm",
+      "bytes": 144707,
+      "sha256": "eee57e30178fe68eeb0ffb66f9cb3f7a998b547b08f03ad360f362b3e5da8d6a"
+    },
+    {
+      "family": "3bhsdh_nadph_final",
+      "file": "3bhsdh_nadph_final.hmm",
+      "bytes": 160983,
+      "sha256": "f696dcf1671f862e56f49ccd8b8fae3fdb78b0a67f772585a67dcfa79263ac3b"
+    },
+    {
+      "family": "7ahsdh_nadh_final",
+      "file": "7ahsdh_nadh_final.hmm",
+      "bytes": 122386,
+      "sha256": "c2cb0efd4f17d4e6ab73c44057b3d7055295713fd452a50813e23b2512a86646"
+    },
+    {
+      "family": "7ahsdh_nadh_nonsteroidal_final",
+      "file": "7ahsdh_nadh_nonsteroidal_final.hmm",
+      "bytes": 121467,
+      "sha256": "77dbe2d4a109acd62bafc10afaffb81365b93681b015ba7a38e5b0cfed8f9d68"
+    },
+    {
+      "family": "7ahsdh_nadph_final",
+      "file": "7ahsdh_nadph_final.hmm",
+      "bytes": 122852,
+      "sha256": "d3b666da23018a117f84cb1746cce052872b51ccf7fe179c656331369963881d"
+    },
+    {
+      "family": "7bhsdh_final",
+      "file": "7bhsdh_final.hmm",
+      "bytes": 146097,
+      "sha256": "8e4a7d94f0c5328b55973e8a4e43fa19e5b3516af0abe5e4a55045511b104e87"
+    },
+    {
+      "family": "BaiA1_final",
+      "file": "BaiA1_final.hmm",
+      "bytes": 127961,
+      "sha256": "1a59d3abdf96a93919675ef493fa08eac9c43c4c8f96a0f629fa9fea2fe4ac7d"
+    },
+    {
+      "family": "BaiA2_final",
+      "file": "BaiA2_final.hmm",
+      "bytes": 121450,
+      "sha256": "92a86303b7e9b11ce7aa0d973e61c2e3b8ff8f8bc580711a3538e1a9d6b6dd5f"
+    },
+    {
+      "family": "BaiB_final",
+      "file": "BaiB_final.hmm",
+      "bytes": 230259,
+      "sha256": "eb1aee85407604b4da7c6bce7a7b4bfc27d7aa5166d7d15bba3bf02120f1a066"
+    },
+    {
+      "family": "BaiCD_final",
+      "file": "BaiCD_final.hmm",
+      "bytes": 298148,
+      "sha256": "18308f29232392f3c4e55b6d3bc7a8812f96a0c1963277baeeec8f714f677b4f"
+    },
+    {
+      "family": "BaiE_final",
+      "file": "BaiE_final.hmm",
+      "bytes": 73554,
+      "sha256": "b5db1d6b4903e1dc029ec22426c62fc585c405169fd344180fa2cb0482bc773a"
+    },
+    {
+      "family": "BaiF_final",
+      "file": "BaiF_final.hmm",
+      "bytes": 190735,
+      "sha256": "8c0114023c6cc0d78ed7e37a8f674f0cf24b8da42c697700468e735100a5b74f"
+    },
+    {
+      "family": "BaiG_final",
+      "file": "BaiG_final.hmm",
+      "bytes": 221888,
+      "sha256": "fbe73fa8db6c737f8700d034c036cc28cfcae072d75a0c455a1e08ea853e42da"
+    },
+    {
+      "family": "BaiH_final",
+      "file": "BaiH_final.hmm",
+      "bytes": 296289,
+      "sha256": "7900a6e0932b15f61de9436301a747ca7bf8dbeb0114aa965950876951fd28b5"
+    },
+    {
+      "family": "BaiI_final",
+      "file": "BaiI_final.hmm",
+      "bytes": 8452,
+      "sha256": "42c2edf4a9f043d3e7116fee0ee2fadf6a33cd93ba4407b630f95e7ff5e90544"
+    },
+    {
+      "family": "BaiJ_final",
+      "file": "BaiJ_final.hmm",
+      "bytes": 801744,
+      "sha256": "d8415e2d617717292d684d2a62d6c12cc808c5cc1a3e30f5a59e1e95eda611a0"
+    },
+    {
+      "family": "BaiK_final",
+      "file": "BaiK_final.hmm",
+      "bytes": 204217,
+      "sha256": "8d24f450ea07dd9971e358858b68e473410208572f16d0b3e26b714b8fe60ca5"
+    },
+    {
+      "family": "BaiN_final",
+      "file": "BaiN_final.hmm",
+      "bytes": 195384,
+      "sha256": "dc3a38b144fb11f036ead2d41707c31959b03af1b12c608b99cc22cc6fcad534"
+    },
+    {
+      "family": "BaiO_final",
+      "file": "BaiO_final.hmm",
+      "bytes": 772449,
+      "sha256": "3bc3b786b956bc9086e44813c6ed862f16a3b2693293094762c2dcd71ab8a832"
+    },
+    {
+      "family": "BaiP_final",
+      "file": "BaiP_final.hmm",
+      "bytes": 787794,
+      "sha256": "fdef1b25f6f3828eb55822725766000c2aab6da5c69d775f2717f65e735dff75"
+    },
+    {
+      "family": "BSH_g_final",
+      "file": "BSH_g_final.hmm",
+      "bytes": 152141,
+      "sha256": "327030f0ca0cc5537fa297813145c10088e6b20cae00f8ae838c2a381767e7c3"
+    },
+    {
+      "family": "BSH_t_final",
+      "file": "BSH_t_final.hmm",
+      "bytes": 154466,
+      "sha256": "3c171c9eaf089aadfe2339931308ee4d557157638d4d73173c821da5413b9f01"
+    }
+  ]
+}

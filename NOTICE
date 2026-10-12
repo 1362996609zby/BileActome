@@ -1,0 +1,50 @@
+BileActome
+
+Copyright (c) 2026 China Agricultural University
+
+Developed by:
+  Boyan Zhang
+  Xianzhe Jiang
+  Hailong Zhao
+  Bing Wang
+
+Primary affiliation:
+  State Key Laboratory of Animal Nutrition and Feeding
+  College of Animal Science and Technology
+  China Agricultural University
+  Beijing 100193, China
+
+Additional affiliation of Bing Wang:
+  Sanya Institute of China Agricultural University
+  Sanya 572000, China
+
+Associated publication:
+  Zhang B, Jiang X, Zhao H, Wang B.
+  BileActome reveals community-assembled bile acid metabolism in the
+  rumen microbiome.
+  ISME Communications. 2026;6(1):ycag205.
+  https://doi.org/10.1093/ismeco/ycag205
+
+License notice:
+  Unless otherwise stated, the original material in this repository,
+  including source code, BileActome profile-HMM files, documentation,
+  and example data, is licensed under the Creative Commons Attribution
+  4.0 International License (CC BY 4.0). The complete license text is
+  provided in the LICENSE file.
+
+  When sharing or adapting licensed material, give appropriate credit,
+  provide a link to the license, and indicate whether changes were made.
+  CC BY 4.0 permits commercial as well as non-commercial reuse when its
+  conditions are followed.
+
+Scope and third-party material:
+  The new cli/ distribution has its own LICENSE and NOTICE. Its original
+  orchestration and packaging code is not covered by the root CC BY 4.0
+  license. The paper-release HMMs, legacy scripts, and example data inside
+  that distribution retain CC BY 4.0 as specified in cli/NOTICE.
+
+  The associated journal article is cited for attribution and scientific
+  context; this repository notice does not relicense the published article.
+  Third-party software, databases, identifiers, and other externally sourced
+  material remain subject to the terms of their respective rights holders.
+

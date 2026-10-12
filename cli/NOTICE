@@ -1,0 +1,54 @@
+BileActome CLI
+Copyright (c) 2026 China Agricultural University
+
+English software name (translation of the domestic application name):
+  BileActome Microbial Bile Acid Metabolism Gene Annotation
+  and Abundance Analysis Software
+Application version: V1.0 (package version: 1.0.0)
+Development completion date in the materials: 2026-09-01
+No registration certificate number is asserted by this distribution.
+
+Commercial licensing inquiries:
+  Bing Wang: wangb@cau.edu.cn
+  Boyan Zhang: 1362996609zby@gmail.com
+
+License map:
+  src/bileactome/*.py, original CLI tests and packaging/release documentation:
+    LicenseRef-BileActome-Research-Commercial (see LICENSE)
+  src/bileactome/data/hmm/*.hmm (27 paper-release profiles):
+    CC-BY-4.0
+  src/bileactome/legacy/** (paper-release analysis scripts):
+    CC-BY-4.0
+  src/bileactome/data/toy/toy_gene_catalog/** and matching tests/fixtures:
+    CC-BY-4.0
+  src/bileactome/data/toy/toy_mag/** and matching tests/fixtures:
+    CC-BY-4.0 (CLI synthetic test genome, distributed under CC BY 4.0)
+  Database metadata describing the paper-release profiles:
+    CC-BY-4.0
+
+The source repository for the paper-release resources is:
+  https://github.com/1362996609zby/BileActome
+Its CC BY 4.0 permissions continue to apply to those resources independently
+of the CLI license, including commercial use subject to attribution.
+
+Associated publication authors (publication authorship does not by itself
+establish ownership or development authorship of every CLI component):
+  Boyan Zhang, Xianzhe Jiang, Hailong Zhao, Bing Wang
+
+Primary affiliation:
+  State Key Laboratory of Animal Nutrition and Feeding
+  College of Animal Science and Technology
+  China Agricultural University, Beijing 100193, China
+Additional affiliation of Bing Wang:
+  Sanya Institute of China Agricultural University, Sanya 572000, China
+
+Publication:
+  Zhang B, Jiang X, Zhao H, Wang B.
+  BileActome reveals community-assembled bile acid metabolism in the
+  rumen microbiome. ISME Communications. 2026;6(1):ycag205.
+  https://doi.org/10.1093/ismeco/ycag205
+
+This notice does not relicense the journal article. Third-party source data,
+database records and software dependencies remain subject to their providers'
+terms. CC BY 4.0 reuse requires appropriate credit, a license link and an
+indication of changes. See LICENSES/CC-BY-4.0.txt for the complete terms.

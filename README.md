@@ -1,5 +1,7 @@
 # BileActome
 
+> **CLI release:** [BileActome CLI 1.0.0](https://github.com/1362996609zby/BileActome/releases/tag/cli-v1.0.0) provides an installable Linux command-line package. See [CLI installation and usage](#bileactome-cli-100). All original paper-release resources and instructions below are retained. The CC BY 4.0 badge applies to those paper resources; the CLI has a separate [license](cli/LICENSE).
+
 > **BileActome is an open, curated, HMM-based database and workflow framework for annotating microbial bile acid metabolism genes from genomes, metagenome-assembled genomes (MAGs), isolate whole-genome sequences (WGS), and non-redundant metagenomic gene catalogs.**
 
 [![Resource type](https://img.shields.io/badge/resource-microbial%20bile%20acid%20gene%20database-2f6f9f)](https://github.com/1362996609zby/Bile_acid_v2) [![License](https://img.shields.io/badge/license-CC%20BY%204.0-4c8a2b)](LICENSE)
@@ -131,4 +133,100 @@ BileActome is a reusable annotation resource. The example workflows demonstrate 
 
 The original content of this repository is licensed under the [Creative Commons Attribution 4.0 International License](LICENSE), unless otherwise stated.
 
+Copyright, developer, institutional-affiliation, publication, and third-party-material details are provided in [NOTICE](NOTICE).
+
 You are free to use, share, and adapt the licensed material, including for commercial purposes, provided that appropriate credit is given, a link to the license is provided, and any changes are indicated. Third-party data, database identifiers, software dependencies, and other externally sourced materials remain subject to the terms and licenses of their respective providers.
+
+## BileActome CLI 1.0.0
+
+The new [CLI distribution](cli/README.md) packages the original 27 HMMs and
+toy data with dependency checks, database checksum verification, run
+manifests, checkpoint/resume support, result validation, and an ASCII
+terminal logo. It does not replace the paper workflows above or change
+the licenses of the original resources. Linux x86_64 (including WSL2)
+is the currently validated platform.
+
+### Installation before Bioconda acceptance
+
+The [GitHub release](https://github.com/1362996609zby/BileActome/releases/tag/cli-v1.0.0)
+provides a source archive, Python wheel, and locally built Conda package.
+**Official Bioconda availability is pending recipe review and acceptance.**
+Do not expect `conda install bileactome` to work until the package is published
+in that channel. No PyPI release is claimed here either.
+
+For the published source archive, create an isolated environment first:
+
+```bash
+curl -fL -o bileactome-1.0.0.tar.gz https://github.com/1362996609zby/BileActome/releases/download/cli-v1.0.0/bileactome-1.0.0.tar.gz
+tar -xzf bileactome-1.0.0.tar.gz
+cd bileactome-1.0.0
+mamba env create -f environment.yml --strict-channel-priority
+conda activate bileactome
+python -m pip install . --no-deps
+bileactome doctor --workflow all
+bileactome db verify
+bileactome self-test --workflow all
+```
+
+`pip` alone does not install HMMER, Prodigal, or Bowtie2. The supplied
+environment provides these executables and Python dependencies. Supported
+constraints include Python 3.10-3.12, Bash 4+, HMMER 3.4.x, Prodigal
+2.6.x (>=2.6.3), and Bowtie2 2.5.x (>=2.5.4). The release was validated
+with Python 3.11, HMMER 3.4, Prodigal 2.6.3, and Bowtie2 2.5.4.
+See [the pinned reference environment](cli/environment.release.yml).
+
+After official Bioconda publication, the intended installation is:
+
+```bash
+mamba create -n bileactome --strict-channel-priority -c conda-forge -c bioconda bileactome=1.0.0
+conda activate bileactome
+```
+
+### CLI commands, inputs, and outputs
+
+```bash
+bileactome --version
+bileactome --banner --help
+bileactome license
+bileactome mag run --genome-dir genomes --output-dir results/mag --threads 8
+bileactome catalog run --protein-fasta proteins.fa --cds-fasta cds.fa --reads-dir clean_reads --output-dir results/catalog --threads 8
+bileactome results validate --project-dir results/mag
+```
+
+- `mag run`: nucleotide genome/MAG/WGS FASTA files; outputs per-genome
+  HMM hits and a genome-by-family count matrix. Counts are not read-based
+  abundance estimates.
+- `catalog run`: matching non-redundant protein/CDS FASTA catalogs and paired
+  clean FASTQ reads; outputs gene/function mappings, RPKM, family summed
+  abundance, relative abundance, and sample-wise CLR matrices.
+- The default full-sequence HMMER threshold is `E <= 1e-3`. Run manifests,
+  logs, and checkpoints are kept in the output directory. Rerun the same
+  command to resume; use a new output directory after changing inputs or
+  parameters.
+- The logo is displayed on stderr in interactive terminals. `--banner`
+  forces it, and `--no-banner` or `BILEACTOME_NO_BANNER=1` suppresses it.
+  JSON results remain on stdout without the logo.
+
+See [the CLI README](cli/README.md) and [release guide](cli/docs/RELEASE.md)
+for troubleshooting, dependencies, and verification.
+
+### CLI licensing and commercial inquiries
+
+Copyright (c) 2026 China Agricultural University.
+The new CLI framework is covered by the
+[BileActome Research and Commercial License](cli/LICENSE): non-commercial
+research and education are free under its terms, while commercial CLI use
+requires separate written authorization. Public package redistribution
+is expressly permitted. This custom license is not OSI-approved.
+
+The 27 paper HMMs, original scripts, and original toy data remain
+**CC BY 4.0**, including commercial reuse under that license's terms.
+The CLI license does not revoke those rights. See [CLI NOTICE](cli/NOTICE)
+for the directory-level license map.
+
+Commercial licensing inquiries:
+
+- Bing Wang: wangb@cau.edu.cn
+- Boyan Zhang: 1362996609zby@gmail.com
+
+Citation remains the original article listed above.

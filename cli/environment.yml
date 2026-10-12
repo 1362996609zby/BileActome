@@ -1,0 +1,15 @@
+name: bileactome
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10
+  - hmmer>=3.4,<3.5
+  - prodigal>=2.6.3,<2.7
+  - bowtie2>=2.5.4,<2.6
+  - biopython>=1.81,<2
+  - pandas>=2.0,<3
+  - numpy>=1.24,<2
+  - openpyxl>=3.1,<4
+  - pip
+  - pytest

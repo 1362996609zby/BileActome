@@ -1,0 +1,14 @@
+name: bileactome-release
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.11
+  - pip
+  - hmmer=3.4
+  - prodigal=2.6.3
+  - bowtie2=2.5.4
+  - biopython=1.85
+  - numpy=1.26.4
+  - pandas=2.2.3
+  - openpyxl=3.1.5

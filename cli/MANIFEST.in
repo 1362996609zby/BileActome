@@ -1,0 +1,9 @@
+include LICENSE NOTICE README.md environment.yml environment.release.yml
+recursive-include LICENSES *.txt
+recursive-include src/bileactome/data *.hmm *.json *.fa *.fna *.gz *.sh *.py *.md
+recursive-include src/bileactome/legacy *.py *.sh
+recursive-include tests *.py *.fa *.fna *.gz *.sh *.md
+recursive-include recipes *.yaml
+recursive-include tools *.py *.sh
+recursive-include docs *.md
+global-exclude __pycache__ *.py[cod]
