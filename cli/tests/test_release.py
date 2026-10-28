@@ -35,7 +35,7 @@ def test_version_is_one_line(capsys):
         main(["--version"])
     assert exc.value.code == 0
     captured = capsys.readouterr()
-    assert captured.out == "BileActome 1.0.0\n"
+    assert captured.out == "BileActome 1.0.1\n"
     assert captured.err == ""
 
 
@@ -45,6 +45,8 @@ def test_license_summary_marks_cc_exception(capsys):
     assert exc.value.code == 0
     text = capsys.readouterr().out
     assert "China Agricultural University" in text
+    assert "BSD-3-Clause" in text
+    assert "prior written authorization required" not in text
     assert "commercial reuse permitted" in text
     assert "Bing Wang: wangb@cau.edu.cn" in text
     assert "Boyan Zhang: 1362996609zby@gmail.com" in text

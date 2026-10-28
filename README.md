@@ -1,6 +1,6 @@
 # BileActome
 
-> **CLI release:** [BileActome CLI 1.0.0](https://github.com/1362996609zby/BileActome/releases/tag/cli-v1.0.0) provides an installable Linux command-line package. See [CLI installation and usage](#bileactome-cli-100). All original paper-release resources and instructions below are retained. The CC BY 4.0 badge applies to those paper resources; the CLI has a separate [license](cli/LICENSE).
+> **CLI release:** [BileActome CLI 1.0.1](https://github.com/1362996609zby/BileActome/releases/tag/cli-v1.0.1) provides an installable Linux command-line package. See [CLI installation and usage](#bileactome-cli-101). All original paper-release resources and instructions below are retained. The CC BY 4.0 badge applies to those paper resources; the CLI has a separate [license](cli/LICENSE).
 
 > **BileActome is an open, curated, HMM-based database and workflow framework for annotating microbial bile acid metabolism genes from genomes, metagenome-assembled genomes (MAGs), isolate whole-genome sequences (WGS), and non-redundant metagenomic gene catalogs.**
 
@@ -137,7 +137,7 @@ Copyright, developer, institutional-affiliation, publication, and third-party-ma
 
 You are free to use, share, and adapt the licensed material, including for commercial purposes, provided that appropriate credit is given, a link to the license is provided, and any changes are indicated. Third-party data, database identifiers, software dependencies, and other externally sourced materials remain subject to the terms and licenses of their respective providers.
 
-## BileActome CLI 1.0.0
+## BileActome CLI 1.0.1
 
 The new [CLI distribution](cli/README.md) packages the original 27 HMMs and
 toy data with dependency checks, database checksum verification, run
@@ -148,8 +148,8 @@ is the currently validated platform.
 
 ### Installation before Bioconda acceptance
 
-The [GitHub release](https://github.com/1362996609zby/BileActome/releases/tag/cli-v1.0.0)
-provides a source archive, Python wheel, and locally built Conda package.
+The [GitHub release](https://github.com/1362996609zby/BileActome/releases/tag/cli-v1.0.1)
+provides a source archive and Python wheel for installation and Bioconda builds.
 **Official Bioconda availability is pending recipe review and acceptance.**
 The submitted recipe is tracked in [Bioconda PR #70193](https://github.com/bioconda/bioconda-recipes/pull/70193).
 Do not expect `conda install bileactome` to work until the package is published
@@ -158,9 +158,9 @@ in that channel. No PyPI release is claimed here either.
 For the published source archive, create an isolated environment first:
 
 ```bash
-curl -fL -o bileactome-1.0.0.tar.gz https://github.com/1362996609zby/BileActome/releases/download/cli-v1.0.0/bileactome-1.0.0.tar.gz
-tar -xzf bileactome-1.0.0.tar.gz
-cd bileactome-1.0.0
+curl -fL -o bileactome-1.0.1.tar.gz https://github.com/1362996609zby/BileActome/releases/download/cli-v1.0.1/bileactome-1.0.1.tar.gz
+tar -xzf bileactome-1.0.1.tar.gz
+cd bileactome-1.0.1
 mamba env create -f environment.yml --strict-channel-priority
 conda activate bileactome
 python -m pip install . --no-deps
@@ -179,14 +179,16 @@ See [the pinned reference environment](cli/environment.release.yml).
 After official Bioconda publication, the intended installation is:
 
 ```bash
-mamba create -n bileactome --strict-channel-priority -c conda-forge -c bioconda bileactome=1.0.0
+mamba create -n bileactome --strict-channel-priority -c conda-forge -c bioconda bileactome=1.0.1
 conda activate bileactome
 ```
 
 ### PyPI publication deferred
 
-PyPI publication of the same CLI 1.0.0 wheel and source archive is prepared
-through [GitHub Trusted Publishing](.github/workflows/pypi-publish.yml).
+PyPI publication remains deferred. The historical
+[GitHub Trusted Publishing workflow](.github/workflows/pypi-publish.yml)
+targets the previous 1.0.0 assets and is paused. Update its immutable assets
+and checksums before a separately authorized future PyPI publication.
 **PyPI publication is deferred by project decision. No upload has been
 performed, and the command below is not available from the public index.**
 See [publisher setup and verification](cli/docs/PYPI_PUBLISHING.md).
@@ -196,7 +198,7 @@ After confirmed publication, install in an isolated Linux environment:
 ```bash
 mamba create -n bileactome-pip --strict-channel-priority -c conda-forge -c bioconda python=3.11 pip 'bash>=4' 'hmmer>=3.4,<3.5' 'prodigal>=2.6.3,<2.7' 'bowtie2>=2.5.4,<2.6'
 conda activate bileactome-pip
-python -m pip install bileactome==1.0.0
+python -m pip install bileactome==1.0.1
 bileactome doctor --workflow all
 bileactome db verify
 bileactome self-test --workflow all
@@ -205,7 +207,7 @@ bileactome self-test --workflow all
 PyPI supplies the CLI, 27 HMMs, toy fixtures, and Python dependencies.
 It does **not** install the external HMMER, Prodigal, or Bowtie2 programs.
 The environment command above provides those tools. License terms,
-copyright, and commercial licensing contacts are unchanged.
+copyright and notices are included in the installed package.
 
 ### CLI commands, inputs, and outputs
 
@@ -235,21 +237,23 @@ bileactome results validate --project-dir results/mag
 See [the CLI README](cli/README.md) and [release guide](cli/docs/RELEASE.md)
 for troubleshooting, dependencies, and verification.
 
-### CLI licensing and commercial inquiries
+### CLI licensing and collaboration contacts
 
 Copyright (c) 2026 China Agricultural University.
-The new CLI framework is covered by the
-[BileActome Research and Commercial License](cli/LICENSE): non-commercial
-research and education are free under its terms, while commercial CLI use
-requires separate written authorization. Public package redistribution
-is expressly permitted. This custom license is not OSI-approved.
+Starting with version 1.0.1, original CLI code, tests, packaging and release
+documentation use the OSI-approved [BSD 3-Clause License](cli/LICENSE).
+Research and commercial use, modification and redistribution are permitted
+under its terms without a separate commercial authorization. Retain license
+notices; author or institutional endorsement requires permission.
+Earlier 1.0.0 release assets are preserved unchanged. The new combined CLI
+distribution declares `BSD-3-Clause AND CC-BY-4.0` for its respective components.
 
 The 27 paper HMMs, original scripts, and original toy data remain
 **CC BY 4.0**, including commercial reuse under that license's terms.
 The CLI license does not revoke those rights. See [CLI NOTICE](cli/NOTICE)
 for the directory-level license map.
 
-Commercial licensing inquiries:
+Project and collaboration contacts:
 
 - Bing Wang: wangb@cau.edu.cn
 - Boyan Zhang: 1362996609zby@gmail.com

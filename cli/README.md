@@ -4,7 +4,7 @@ BileActome is a Linux command-line software package for annotating microbial bil
 
 Software name: BileActome Microbial Bile Acid Metabolism Gene Annotation and Abundance Analysis Software.
 Copyright holder: China Agricultural University. Application-material version:
-V1.0; package version: 1.0.0. This is the CLI distribution; the paper-release
+V1.0; package version: 1.0.1. This is the CLI distribution; the paper-release
 resources are available separately in the original GitHub repository.
 
 ## Installation
@@ -21,7 +21,7 @@ The official Bioconda package is being prepared and is not yet published.
 The intended command after review and acceptance is:
 
 ```bash
-mamba create -n bileactome --strict-channel-priority -c conda-forge -c bioconda bileactome=1.0.0
+mamba create -n bileactome --strict-channel-priority -c conda-forge -c bioconda bileactome=1.0.1
 ```
 
 Runtime dependencies: Python 3.10–3.12, Bash 4+, HMMER 3.4.x, Prodigal 2.6.x
@@ -74,13 +74,13 @@ directory, and `results validate` checks output structure and values.
 
 ## License and citation
 
-CLI code is covered by the [BileActome Research and Commercial License](LICENSE).
-Non-commercial research and education are free under its terms; commercial
-CLI use requires prior written authorization from China Agricultural
-University or its authorized representative. Public package redistribution
-is permitted. This custom license is not an OSI-approved open-source license.
+Starting with version 1.0.1, original CLI code, tests, packaging and release
+documentation use the OSI-approved [BSD 3-Clause License](LICENSE).
+Research and commercial use, modification and redistribution are permitted
+under its terms without a separate commercial authorization. Retain license
+notices; author or institutional endorsement requires permission.
 
-Commercial licensing inquiries: Bing Wang (wangb@cau.edu.cn)
+Project and collaboration contacts: Bing Wang (wangb@cau.edu.cn)
 and Boyan Zhang (1362996609zby@gmail.com).
 
 The 27 paper HMMs, legacy scripts and toy data remain [CC BY 4.0](LICENSES/CC-BY-4.0.txt),
@@ -99,5 +99,5 @@ Self-test fixtures are installed with the wheel and can run outside the
 source tree. For interrupted analyses, retain the output directory and logs
 and rerun the same command. Do not reuse completed output directories after
 changing inputs or thresholds. See [docs/RELEASE.md](docs/RELEASE.md) for local
-Conda builds, release archive hashes, custom-license review and Bioconda PR
+Conda builds, release archive hashes, license notices and Bioconda PR
 preparation.

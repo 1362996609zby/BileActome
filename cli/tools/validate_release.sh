@@ -18,7 +18,8 @@ cp -a "$release_source/." "$build_source/"
 cd "$build_source"
 python -m build --no-isolation --outdir "$release_work/dist" > "$release_work/build.log" 2>&1
 python -m twine check "$release_work"/dist/* > "$release_work/twine.log" 2>&1
-python -m pip install --no-deps --force-reinstall "$release_work/dist/bileactome-1.0.0-py3-none-any.whl" > "$release_work/install.log" 2>&1
+package_version=$(python -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')
+python -m pip install --no-deps --force-reinstall "$release_work/dist/bileactome-${package_version}-py3-none-any.whl" > "$release_work/install.log" 2>&1
 cd "$release_work/run"
 python -m pytest "$release_source/tests" -q --capture=sys -o cache_dir="$release_work/pytest-cache" > "$release_work/pytest.log" 2>&1
 bileactome --version > "$release_work/version.txt"

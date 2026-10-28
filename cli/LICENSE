@@ -1,78 +1,29 @@
-BileActome CLI Research and Commercial License, version 1.0
-Copyright (c) 2026 China Agricultural University
+BSD 3-Clause License
 
-Software name: BileActome Microbial Bile Acid Metabolism Gene Annotation
-and Abundance Analysis Software
-Registration-material version: V1.0
-Package version: 1.0.0
+Copyright (c) 2026, China Agricultural University
+All rights reserved.
 
-1. Scope
-This license applies only to the original BileActome CLI orchestration,
-command-line interface, environment diagnosis, database verification,
-checkpoint management, logging, result validation, packaging, and other
-new code and documentation in this distribution. The excluded materials
-listed in NOTICE remain under their existing licenses. This is a software
-license, not a software copyright registration certificate.
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
 
-2. Non-commercial research and education
-Individuals and non-profit research or educational institutions may use,
-copy, and modify the covered software without a license fee solely for
-non-commercial research, teaching, and academic validation. Academic
-publication and ordinary public research funding do not by themselves
-constitute commercial use. Research performed as a paid service for a
-third party, incorporation into a commercial product, or use in a commercial
-organization requires a separate commercial license from the rights holder.
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
 
-3. Commercial licensing
-Commercial use requires prior written authorization from China Agricultural
-University or its duly authorized licensing representative. Commercial use
-includes providing paid sequencing or bioinformatics services, producing
-paid analysis reports, using the covered software in commercial operations,
-or incorporating it into a paid product, hosted service, API, or workflow.
-Installation or public availability does not grant commercial-use rights.
-No commercial license fee or commercial contract is established by this file.
-Commercial licensing inquiries:
-  Bing Wang: wangb@cau.edu.cn
-  Boyan Zhang: 1362996609zby@gmail.com
-These project contacts receive licensing inquiries; a commercial license is
-granted only by separate written authorization under this section.
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
 
-4. Public package redistribution
-Bioconda, conda-forge, PyPI, GitHub, package mirrors, and other distributors
-are permitted to obtain, build, package, host, and redistribute this software
-publicly without a distribution fee, including by organizations operating
-commercial package infrastructure. This permission covers packaging changes
-necessary for installation, compatibility, and reproducible builds. Retain
-this license, NOTICE, and the excluded materials' license notices, identify
-any changes, and do not represent a redistributed copy as commercially
-licensed. Redistribution permission does not grant end users commercial-use
-rights. Do not sell or sublicense the covered software itself without a
-separate written agreement. Public package access does not require an
-email address, institutional identity check, or interactive license prompt.
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
 
-5. Excluded CC BY 4.0 material and third-party tools
-The paper-release profile-HMMs, legacy scripts, and paper-release example
-data remain licensed under Creative Commons Attribution 4.0 International.
-See LICENSES/CC-BY-4.0.txt and NOTICE. Nothing in this license restricts
-rights already granted for those materials, including commercial reuse.
-Independent tools such as HMMER, Prodigal, and Bowtie2 retain their own
-licenses. Installing or invoking those tools does not relicense them.
-
-6. Attribution, results, and endorsement
-Retain the copyright and license notices when distributing the software.
-Citation of the associated paper is requested for academic use. Users retain
-their rights in their input data and their own analysis results; this license
-does not impose a separate license on those results. No institutional or
-author endorsement is granted.
-
-7. Warranty and liability
-The covered software is provided "AS IS", without warranties of any kind,
-to the extent permitted by applicable law. The rights holder and contributors
-are not liable for damages arising from use of the software, to the extent
-permitted by applicable law. Functional predictions require appropriate
-biological interpretation and validation.
-
-8. Compliance
-Rights under this license depend on compliance with its terms. Rights in
-excluded materials continue to be governed by their respective licenses.
-This license grants no patent or trademark rights.
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

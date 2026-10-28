@@ -1,5 +1,5 @@
 {% set name = "bileactome" %}
-{% set version = "1.0.0" %}
+{% set version = "1.0.1" %}
 
 package:
   name: {{ name }}
@@ -51,7 +51,7 @@ test:
 
 about:
   home: https://github.com/1362996609zby/BileActome
-  license: LicenseRef-BileActome-Research-Commercial AND CC-BY-4.0
+  license: BSD-3-Clause AND CC-BY-4.0
   license_file:
     - LICENSE
     - NOTICE
@@ -64,8 +64,7 @@ extra:
   identifiers:
     - doi:10.1093/ismeco/ycag205
   notes: >-
-    Public package redistribution is expressly permitted. CLI commercial use
-    requires a separate authorization; paper HMMs and legacy scripts remain
-    CC BY 4.0. Linux is the currently validated platform; other platforms
-    require upstream validation. The custom license is subject to maintainer
-    review before acceptance into Bioconda.
+    CLI code uses BSD-3-Clause; bundled paper HMMs, legacy scripts, metadata
+    and toy data retain CC BY 4.0. Both licenses permit commercial reuse
+    under their respective terms. Linux is the currently validated platform;
+    other platforms require upstream validation.

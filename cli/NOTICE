@@ -4,17 +4,17 @@ Copyright (c) 2026 China Agricultural University
 English software name (translation of the domestic application name):
   BileActome Microbial Bile Acid Metabolism Gene Annotation
   and Abundance Analysis Software
-Application version: V1.0 (package version: 1.0.0)
+Application version: V1.0 (package version: 1.0.1)
 Development completion date in the materials: 2026-09-01
 No registration certificate number is asserted by this distribution.
 
-Commercial licensing inquiries:
+Project and collaboration contacts:
   Bing Wang: wangb@cau.edu.cn
   Boyan Zhang: 1362996609zby@gmail.com
 
 License map:
   src/bileactome/*.py, original CLI tests and packaging/release documentation:
-    LicenseRef-BileActome-Research-Commercial (see LICENSE)
+    BSD-3-Clause (see LICENSE), effective with CLI package version 1.0.1
   src/bileactome/data/hmm/*.hmm (27 paper-release profiles):
     CC-BY-4.0
   src/bileactome/legacy/** (paper-release analysis scripts):
@@ -30,6 +30,14 @@ The source repository for the paper-release resources is:
   https://github.com/1362996609zby/BileActome
 Its CC BY 4.0 permissions continue to apply to those resources independently
 of the CLI license, including commercial use subject to attribution.
+
+CLI version 1.0.1 and later use BSD-3-Clause for the original CLI code,
+tests, packaging, and release documentation. Both research and commercial
+use are permitted under that license without a separate commercial license.
+The paper resources listed above remain CC-BY-4.0. The combined distribution
+therefore declares BSD-3-Clause AND CC-BY-4.0; these licenses apply to their
+respective components, not as alternative licenses for the same files.
+Published version 1.0.0 archives are retained unchanged for provenance.
 
 Associated publication authors (publication authorship does not by itself
 establish ownership or development authorship of every CLI component):

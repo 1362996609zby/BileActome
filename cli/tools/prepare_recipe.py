@@ -27,10 +27,14 @@ def main():
     digest = hashlib.sha256(args.archive.read_bytes()).hexdigest()
     template = Path(__file__).resolve().parents[1] / "recipes/bileactome/meta.yaml"
     text = template.read_text(encoding="utf-8")
+    version = re.search(r'{% set version = "([^"]+)" %}', text).group(1)
+    # Keep immutable release bytes but use the Bioconda Jinja version template.
+    url = args.url.replace(f"cli-v{version}/bileactome-{version}.tar.gz",
+                           "cli-v{{ version }}/bileactome-{{ version }}.tar.gz")
     # HTTPS URL is quoted to avoid YAML metacharacter interpretation.
     import json
 
-    source = f"source:\n  url: {json.dumps(args.url)}\n  sha256: {digest}\n\n"
+    source = f"source:\n  url: {json.dumps(url)}\n  sha256: {digest}\n\n"
     text, replacements = re.subn(r"source:\n.*?\n(?=build:)", source, text, flags=re.S)
     if replacements != 1:
         raise RuntimeError("expected exactly one source section")

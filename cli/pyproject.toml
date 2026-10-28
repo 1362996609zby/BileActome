@@ -4,11 +4,11 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bileactome"
-version = "1.0.0"
+version = "1.0.1"
 description = "Command-line annotation and abundance analysis software for microbial bile acid metabolism genes"
 readme = "README.md"
 requires-python = ">=3.10,<3.13"
-license = "LicenseRef-BileActome-Research-Commercial AND CC-BY-4.0"
+license = "BSD-3-Clause AND CC-BY-4.0"
 license-files = ["LICENSE", "NOTICE", "LICENSES/CC-BY-4.0.txt"]
 authors = [{name = "China Agricultural University"}]
 keywords = ["bile-acid", "metagenomics", "HMM", "microbiome", "bioinformatics"]

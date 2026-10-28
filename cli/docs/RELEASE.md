@@ -1,4 +1,4 @@
-# BileActome CLI V1.0 / package 1.0.0 release preparation
+# BileActome CLI V1.0 / package 1.0.1 release preparation
 
 Copyright holder: China Agricultural University.
 Software name: BileActome Microbial Bile Acid Metabolism Gene Annotation and Abundance Analysis Software.
@@ -10,15 +10,15 @@ materials and their source-code evidence remain archived unchanged.
 
 ## License
 
-CLI code: `LicenseRef-BileActome-Research-Commercial` in LICENSE.
+CLI code from version 1.0.1: `BSD-3-Clause` in LICENSE.
 Paper HMMs, legacy scripts, and toy data: CC BY 4.0 as mapped in NOTICE.
-The CLI license explicitly permits public package build and redistribution,
-including Bioconda and PyPI; commercial execution of the CLI needs a separate
-agreement with the rights holder. It is a custom source-available license,
-not an OSI-approved open-source license. Acceptance by Bioconda maintainers
-must be reviewed and cannot be inferred from software copyright registration.
+BSD-3-Clause is OSI-approved and permits research and commercial use,
+modification and redistribution under its terms. No separate commercial
+authorization is required. The combined distribution declares
+`BSD-3-Clause AND CC-BY-4.0` for the respective components. Retain notices
+and do not imply institutional or contributor endorsement.
 
-The commercial license does not restrict independent commercial use of the
+The BSD license does not restrict independent commercial use of the
 paper-release HMMs and scripts. CLI wrapping, path relocation and newline
 changes do not revoke the original CC license. No identity/email gate is added.
 
@@ -36,7 +36,7 @@ micromamba create -p /path/to/release-env -f environment.release.yml
 micromamba run -p /path/to/release-env python -m pip install build pytest twine
 micromamba run -p /path/to/release-env python -m build --outdir /path/to/work/dist
 micromamba run -p /path/to/release-env python -m twine check /path/to/work/dist/*
-micromamba run -p /path/to/release-env python -m pip install --no-deps /path/to/work/dist/bileactome-1.0.0-py3-none-any.whl
+micromamba run -p /path/to/release-env python -m pip install --no-deps /path/to/work/dist/bileactome-1.0.1-py3-none-any.whl
 # Run outside the repository so the test must use installed package data.
 cd /path/to/work
 micromamba run -p /path/to/release-env bileactome db verify
@@ -65,36 +65,35 @@ the recipe to submit unchanged to Bioconda.
 
 ## Submission sequence
 
-Commercial licensing inquiries: Bing Wang (wangb@cau.edu.cn) and Boyan Zhang
-(1362996609zby@gmail.com). Per the user's publication instructions, there is
-no separate institutional license-confirmation waiting step. Commercial
-licenses still require written authorization under LICENSE. CheckM's GPL
-license is not evidence of acceptance of this custom license.
+Project and collaboration contacts: Bing Wang (wangb@cau.edu.cn) and Boyan Zhang
+(1362996609zby@gmail.com). Version 1.0.1 switches the original CLI framework
+from the historical custom license to BSD-3-Clause to facilitate adoption.
+Preserve existing 1.0.0 release assets; publish new immutable 1.0.1 assets.
 Public README, licenses, CLI messages, recipe and release notes are in English.
 The domestic application retains its original language and name; the English
 product name is a translation for distribution.
 
-1. Publish the exact validated source archive (`bileactome-1.0.0.tar.gz`) as
-   an immutable GitHub release asset (for example tag `cli-v1.0.0`) or PyPI
-   sdist. A CLI-specific repository or clearly marked CLI release avoids
+1. Publish the exact validated source archive (`bileactome-1.0.1.tar.gz`) as
+   an immutable GitHub release asset (tag `cli-v1.0.1`). PyPI publication
+   remains deferred. A clearly marked CLI release avoids
    inheriting the paper repository's blanket CC BY declaration for new code.
 2. Generate the public recipe from the actual archive and its public URL:
 
 ```bash
 python tools/prepare_recipe.py \
-  --archive /path/to/bileactome-1.0.0.tar.gz \
-  --url https://github.com/1362996609zby/BileActome/releases/download/cli-v1.0.0/bileactome-1.0.0.tar.gz \
+  --archive /path/to/bileactome-1.0.1.tar.gz \
+  --url https://github.com/1362996609zby/BileActome/releases/download/cli-v1.0.1/bileactome-1.0.1.tar.gz \
   --output /path/to/submission/recipes/bileactome/meta.yaml
 ```
 
-The URL above is a proposed release location, not an existing release.
-Download it after publication and compare SHA-256 with the local archive.
-Do not substitute the paper repository's `main` archive: it does not contain
-this CLI package. This archive must also include all license texts.
+Download the URL after publication and compare SHA-256 with the local archive.
+Do not substitute the repository's `main` archive: its layout and contents
+differ from the validated CLI source distribution. The CLI source archive
+must also include all license texts.
 
 3. Fork `bioconda/bioconda-recipes`, add the generated recipe under
    `recipes/bileactome/`, run Bioconda lint/build checks, and submit a PR.
-   Explain the custom license and link its redistribution permission.
+   Explain the BSD-3-Clause CLI / CC-BY-4.0 resource boundary in NOTICE.
    Bioconda CI and maintainer approval are required before public availability.
 4. After acceptance, test installation from the public channel in a fresh
    Linux environment and save an explicit dependency lockfile for that build.
@@ -104,7 +103,7 @@ Target command after acceptance (not currently available):
 
 ```bash
 mamba create -n bileactome --strict-channel-priority \
-  -c conda-forge -c bioconda bileactome=1.0.0
+  -c conda-forge -c bioconda bileactome=1.0.1
 conda activate bileactome
 bileactome
 bileactome license
@@ -112,6 +111,5 @@ bileactome doctor
 bileactome self-test --workflow all --threads 2 --output-dir selftest
 ```
 
-If the custom license is declined, publish the same Conda artifact in an
-authorized project channel. This preserves the installation interface but
-does not claim it is in the official Bioconda channel.
+Maintainer approval and public-channel installation verification remain
+required before advertising official Bioconda availability.

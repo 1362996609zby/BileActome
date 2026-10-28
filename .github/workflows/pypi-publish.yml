@@ -12,6 +12,9 @@ concurrency:
 
 jobs:
   verify-release:
+    # PyPI publication is deferred; re-enable only for an authorized release
+    # after updating the version and immutable asset hashes below.
+    if: ${{ false }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-python@v5
