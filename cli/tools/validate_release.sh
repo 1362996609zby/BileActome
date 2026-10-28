@@ -18,7 +18,19 @@ cp -a "$release_source/." "$build_source/"
 cd "$build_source"
 python -m build --no-isolation --outdir "$release_work/dist" > "$release_work/build.log" 2>&1
 python -m twine check "$release_work"/dist/* > "$release_work/twine.log" 2>&1
-package_version=$(python -c 'import tomllib; print(tomllib.load(open("pyproject.toml", "rb"))["project"]["version"])')
+# Read standard wheel metadata; works on Python 3.10 without tomllib.
+package_version=$(python - "$release_work/dist" <<'PY'
+import sys
+import zipfile
+from email.parser import BytesParser
+from pathlib import Path
+
+wheel, = Path(sys.argv[1]).glob("bileactome-*-py3-none-any.whl")
+with zipfile.ZipFile(wheel) as archive:
+    metadata, = (name for name in archive.namelist() if name.endswith(".dist-info/METADATA"))
+    print(BytesParser().parsebytes(archive.read(metadata))["Version"])
+PY
+)
 python -m pip install --no-deps --force-reinstall "$release_work/dist/bileactome-${package_version}-py3-none-any.whl" > "$release_work/install.log" 2>&1
 cd "$release_work/run"
 python -m pytest "$release_source/tests" -q --capture=sys -o cache_dir="$release_work/pytest-cache" > "$release_work/pytest.log" 2>&1
